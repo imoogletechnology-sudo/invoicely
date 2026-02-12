@@ -16,6 +16,7 @@ const currencyLocaleMap: Record<string, string> = {
   CHF: "de-CH",
   SEK: "sv-SE",
   NZD: "en-NZ",
+  NGN: "en-NG",
 };
 
 export const formatCurrencyText = (currency: string, amount: number) => {

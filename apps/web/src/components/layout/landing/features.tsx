@@ -17,7 +17,7 @@ const Features = () => {
         </ModernCardDescription>
       </div>
       <div className="flex h-40 flex-col gap-3 border-b border-dashed p-4 sm:h-auto sm:border-l">
-        <ModernCardTitle>Safe & Open Source</ModernCardTitle>
+        <ModernCardTitle>Safe & Secure</ModernCardTitle>
         <ModernCardDescription>
           Your data stays yours — we never track, sell, or share it. Store everything locally or securely on our server
           — the choice is yours.

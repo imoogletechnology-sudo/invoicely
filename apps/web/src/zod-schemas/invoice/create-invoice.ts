@@ -160,7 +160,7 @@ export const createInvoiceSchemaDefaultValues: ZodCreateInvoiceSchema = {
       baseColor: "#635CFF",
       mode: "light",
     },
-    currency: "USD",
+    currency: "NGN",
     prefix: "Invoice INV-",
     serialNumber: "0001",
     date: new Date(), // now

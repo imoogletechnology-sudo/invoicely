@@ -161,7 +161,7 @@ const InvoiceForm: React.FC<InvoiceFormProps> = ({ form }) => {
                   <FormSelect
                     name="invoiceDetails.currency"
                     description="Currency code for the invoice"
-                    defaultValue="USD"
+                    defaultValue="NGN"
                     label="Currency"
                     reactform={form}
                   >
