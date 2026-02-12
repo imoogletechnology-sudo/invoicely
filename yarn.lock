@@ -11327,6 +11327,7 @@ __metadata:
     "@invoicely/eslint-config": "workspace:*"
     "@invoicely/typescript-config": "workspace:*"
     "@mantine/hooks": "npm:^8.3.14"
+    "@react-pdf/font": "npm:^4.0.4"
     "@react-pdf/renderer": "npm:^4.3.2"
     "@t3-oss/env-nextjs": "npm:^0.13.4"
     "@tanstack/react-query": "npm:^5.90.21"
