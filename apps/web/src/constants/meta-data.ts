@@ -12,9 +12,16 @@ export const defaultWebsiteMetadata: Metadata = {
   metadataBase: new URL("https://invoicely.gg"),
   title: "Invoicely - Create Beautiful & Professional Invoices",
   description:
-    "Invoicely is a simple and easy to use invoice generator where you can create beautiful and professional invoices in minutes. ~ Proudly OSS - Backed by Cloudflare OSS",
+    "Invoicely is a simple and free invoice generator that makes invoice creation simple, fast, and privacy-focused. Create beautiful, professional invoices in minutes. By Imoogle Technology.",
+  manifest: "/manifest.json",
   icons: {
     icon: "/official/invoicely-logo.png",
+    apple: "/official/invoicely-logo.png",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Invoicely",
   },
   openGraph: {
     images: "/official/og-banner.png",

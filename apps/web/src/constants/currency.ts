@@ -20,26 +20,59 @@ const currencyLocaleMap: Record<string, string> = {
 };
 
 /**
+ * Currency symbols that are safe to render in PDF fonts (basic Latin charset).
+ * Symbols outside this set (e.g. ₦, ₹, ¥, ₩) may not exist in the TTF font
+ * glyphs used by react-pdf, so we fall back to the 3-letter currency code.
+ */
+const PDF_SAFE_SYMBOLS = new Set(["$", "€", "£", "Fr", "kr"]);
+
+/**
+ * Get a PDF-safe currency prefix. Uses the symbol if it's in the safe set,
+ * otherwise falls back to the uppercase currency code (e.g. "NGN ").
+ */
+const getPdfSafePrefix = (currency: string): string => {
+  const symbol = getSymbolFromCurrency(currency);
+  if (symbol && PDF_SAFE_SYMBOLS.has(symbol)) {
+    return symbol;
+  }
+  // Always use 3-letter code with a space for non-Latin symbols
+  return `${currency.toUpperCase()} `;
+};
+
+/**
+ * Get the display label for a currency (e.g. "NGN (₦)" or "$").
+ * Used in the invoice header to show both the code and symbol.
+ */
+export const getCurrencyDisplayLabel = (currency: string): string => {
+  const symbol = getSymbolFromCurrency(currency);
+  if (symbol && PDF_SAFE_SYMBOLS.has(symbol)) {
+    return symbol;
+  }
+  if (symbol) {
+    return `${currency.toUpperCase()} (${symbol})`;
+  }
+  return currency.toUpperCase();
+};
+
+/**
  * Format a currency amount for display.
- * Uses the currency symbol from the symbol map with Intl number formatting
- * to ensure the symbol always renders correctly (even in PDF contexts where
- * fonts may not support special Unicode currency characters like ₦).
+ * Uses PDF-safe symbols for common currencies ($, €, £) and falls back
+ * to the 3-letter currency code for currencies whose symbols aren't
+ * in standard Latin fonts (like NGN, INR, CNY, KRW, etc.).
  */
 export const formatCurrencyText = (currency: string, amount: number) => {
   try {
-    const symbol = getSymbolFromCurrency(currency) || currency;
+    const prefix = getPdfSafePrefix(currency);
     const locale = currencyLocaleMap[currency] || "en-US";
 
-    // Format the number part only (without currency symbol) to get proper grouping
     const formattedNumber = new Intl.NumberFormat(locale, {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(amount);
 
-    return `${symbol}${formattedNumber}`;
+    return `${prefix}${formattedNumber}`;
   } catch {
-    // Fallback to simple formatting with symbol
-    const symbol = getSymbolFromCurrency(currency) || currency;
-    return `${symbol}${amount.toFixed(2)}`;
+    const prefix = getPdfSafePrefix(currency);
+    return `${prefix}${amount.toFixed(2)}`;
   }
 };

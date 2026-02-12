@@ -1,12 +1,12 @@
 import { ZodCreateInvoiceSchema } from "@/zod-schemas/invoice/create-invoice";
+import { DefaultPDF, MinimalPDF, ProfessionalPDF, ModernPDF } from "@/components/pdf";
 import { FormSelect } from "@/components/ui/form/form-select";
-import { DefaultPDF, MinimalPDF } from "@/components/pdf";
 import { SelectItem } from "@/components/ui/select";
 import { UseFormReturn } from "react-hook-form";
-import { TriangleIcon } from "lucide-react";
+import { TriangleIcon, BriefcaseIcon, SparklesIcon } from "lucide-react";
 import { BoxIcon } from "@/assets/icons";
 
-export type PdfTemplateName = "default" | "minimal" | undefined;
+export type PdfTemplateName = "default" | "minimal" | "professional" | "modern" | undefined;
 
 interface PdfTemplate {
   name: PdfTemplateName;
@@ -28,6 +28,18 @@ export const availablePdfTemplates: PdfTemplate[] = [
     label: "Minimal",
     component: MinimalPDF,
     icon: <TriangleIcon stroke="none" fill="currentColor" />,
+  },
+  {
+    name: "professional",
+    label: "Professional",
+    component: ProfessionalPDF,
+    icon: <BriefcaseIcon className="size-4" />,
+  },
+  {
+    name: "modern",
+    label: "Modern",
+    component: ModernPDF,
+    icon: <SparklesIcon className="size-4" />,
   },
 ];
 
