@@ -26,7 +26,7 @@ import type { InvoiceStatusType } from "@invoicely/db/schema/invoice";
 import { Badge, BadgeVariants } from "@/components/ui/badge";
 import { createColumnHelper } from "@tanstack/react-table";
 import { getTotalValue } from "@/constants/pdf-helpers";
-import getSymbolFromCurrency from "currency-symbol-map";
+import { formatCurrencyText } from "@/constants/currency";
 import DeleteInvoiceModal from "./deleteInvoiceModal";
 import UpdateStatusModal from "./updateStatusModal";
 import { Invoice } from "@/types/common/invoice";
@@ -73,7 +73,7 @@ export const columns = [
     id: "total",
     header: ({ column }) => <HeaderColumnButton column={column}>Total</HeaderColumnButton>,
     cell: ({ row }) => (
-      <div className="text-xs">{`${getSymbolFromCurrency(row.original.invoiceFields.invoiceDetails.currency)}${getTotalValue(row.original.invoiceFields)}`}</div>
+      <div className="text-xs">{formatCurrencyText(row.original.invoiceFields.invoiceDetails.currency, getTotalValue(row.original.invoiceFields))}</div>
     ),
   }),
 
@@ -179,7 +179,7 @@ export const importInvoiceColumns = [
     id: "total",
     header: ({ column }) => <HeaderColumnButton column={column}>Total</HeaderColumnButton>,
     cell: ({ row }) => (
-      <div className="text-xs">{`${getSymbolFromCurrency(row.original.invoiceFields.invoiceDetails.currency)}${getTotalValue(row.original.invoiceFields)}`}</div>
+      <div className="text-xs">{formatCurrencyText(row.original.invoiceFields.invoiceDetails.currency, getTotalValue(row.original.invoiceFields))}</div>
     ),
   }),
 

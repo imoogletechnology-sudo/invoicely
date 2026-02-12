@@ -9,6 +9,10 @@ const links = [
     href: LINKS.HOME,
   },
   {
+    label: "About",
+    href: LINKS.ABOUT,
+  },
+  {
     label: "Create Invoice",
     href: LINKS.CREATE.INVOICE,
   },

@@ -1,4 +1,4 @@
-import type { FontSource$1 as PdfFont } from "@react-pdf/font";
+import type { FontSource as PdfFont } from "@react-pdf/font";
 
 export const INTER_FONT: PdfFont[] = [
   {
