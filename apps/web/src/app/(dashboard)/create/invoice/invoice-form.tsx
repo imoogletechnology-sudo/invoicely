@@ -174,7 +174,7 @@ const InvoiceForm: React.FC<InvoiceFormProps> = ({ form }) => {
                       </SelectItem>
                     ))}
                   </FormSelect>
-                  {form.watch("invoiceDetails.theme.template") !== "vercel" && (
+                  {form.watch("invoiceDetails.theme.template") !== "minimal" && (
                     <>
                       <FormSelect
                         name="invoiceDetails.theme.mode"
