@@ -5,6 +5,7 @@ const SOCIALS = {
 export const LINKS = {
   SOCIALS: SOCIALS,
   HOME: "/",
+  ABOUT: "/about",
   DASHBOARD: "/dashboard",
   INVOICES: "/invoices",
   ANALYTICS: "/analytics",

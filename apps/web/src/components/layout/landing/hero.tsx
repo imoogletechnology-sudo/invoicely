@@ -10,37 +10,41 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="relative flex h-[calc(100svh-64px-150px)] flex-row items-center overflow-hidden border-b border-dashed">
+    <div className="relative flex min-h-[calc(100svh-64px-150px)] flex-col items-center justify-center overflow-hidden border-b border-dashed py-16 sm:py-24">
       <div className="absolute inset-0 h-full w-full overflow-hidden">
         <Image
           className="h-full min-h-full w-full object-cover object-left invert dark:invert-0"
           src="/official/invoicely-masked-background.png"
-          alt="Hero"
+          alt="Hero background"
           width={1920}
           height={1080}
         />
       </div>
-      <div className="z-10 flex flex-col gap-4">
-        <div className="flex flex-row items-center gap-2 px-6">
-          <div className="bg-primary/10 relative flex h-7 flex-row items-center gap-2 rounded-md border border-primary/20 px-3">
-            <span className="urbanist text-primary text-sm font-semibold">Free Forever</span>
+      <div className="z-10 flex max-w-2xl flex-col items-center gap-6 px-6 text-center">
+        <div className="flex flex-row items-center gap-3">
+          <div className="bg-primary/10 flex h-7 items-center rounded-full border border-primary/20 px-4">
+            <span className="jetbrains-mono text-primary text-xs font-medium tracking-tight">Free Forever</span>
           </div>
-          <div className="flex flex-row items-center">
-            <div className="bg-muted/20 h-1.5 w-1.5 border"></div>
-            <div className="from-muted h-px w-40 bg-gradient-to-r to-transparent"></div>
+          <div className="bg-muted/40 h-1 w-1 rounded-full"></div>
+          <div className="bg-primary/10 flex h-7 items-center rounded-full border border-primary/20 px-4">
+            <span className="jetbrains-mono text-primary text-xs font-medium tracking-tight">Privacy Focused</span>
           </div>
         </div>
-        <div className="instrument-serif flex flex-col gap-2 px-6 text-6xl">
-          <h1 className="dark:text-primary-foreground/30 text-secondary-foreground/50">
+        <div className="instrument-serif flex flex-col gap-1 text-5xl sm:text-7xl">
+          <h1 className="text-balance dark:text-primary-foreground/30 text-secondary-foreground/50">
             Create <span className="dark:text-primary-foreground text-secondary-foreground">Beautiful</span> Invoices
           </h1>
-          <h2 className="dark:text-primary-foreground/30 text-secondary-foreground/50">
+          <h2 className="text-balance dark:text-primary-foreground/30 text-secondary-foreground/50">
             Not <span className="dark:text-primary-foreground text-secondary-foreground">Ugly</span> Ones
           </h2>
         </div>
-        <div className="mt-4 flex flex-row gap-4 px-6">
+        <p className="jetbrains-mono text-muted-foreground max-w-md text-xs leading-relaxed tracking-tight">
+          Generate professional invoices in seconds. Simple, free, and built with your privacy in mind.
+          No sign-up required.
+        </p>
+        <div className="mt-2 flex flex-row gap-3">
           <Link href={LINKS.CREATE.INVOICE}>
-            <Button>
+            <Button size="lg">
               <span>Get Started</span>
               <CircleOpenArrowRight className="-rotate-45" />
             </Button>
@@ -51,8 +55,8 @@ const Hero = () => {
               group: "landing-page",
             }}
           >
-            <Link href={LINKS.BLOGS}>
-              <Button variant="secondary">
+            <Link href={LINKS.ABOUT}>
+              <Button variant="secondary" size="lg">
                 <span>Learn More</span>
                 <CircleOpenArrowRight className="text-muted-foreground -rotate-45" />
               </Button>

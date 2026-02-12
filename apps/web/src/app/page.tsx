@@ -1,6 +1,7 @@
 "use client";
 
 import Features from "@/components/layout/landing/features";
+import Mission from "@/components/layout/landing/mission";
 import Header from "@/components/layout/landing/header";
 import Footer from "@/components/layout/landing/footer";
 import Hero from "@/components/layout/landing/hero";
@@ -11,6 +12,7 @@ export default function Home() {
       <Header />
       <Hero />
       <Features />
+      <Mission />
       <Footer />
     </div>
   );

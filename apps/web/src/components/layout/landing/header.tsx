@@ -14,6 +14,18 @@ const Header = () => {
         <span className="instrument-serif text-xl font-semibold">Invoicely</span>
       </Link>
       <div className="flex flex-row items-center gap-3">
+        <Link
+          href={LINKS.ABOUT}
+          className="jetbrains-mono text-muted-foreground hover:text-foreground hidden text-xs tracking-tight transition-colors sm:block"
+        >
+          About
+        </Link>
+        <Link
+          href={LINKS.BLOGS}
+          className="jetbrains-mono text-muted-foreground hover:text-foreground hidden text-xs tracking-tight transition-colors sm:block"
+        >
+          Blog
+        </Link>
         <ThemeSwitch />
         <Link href={LINKS.CREATE.INVOICE}>
           <Button variant="secondary">
