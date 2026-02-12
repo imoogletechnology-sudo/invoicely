@@ -1,12 +1,12 @@
 import { ZodCreateInvoiceSchema } from "@/zod-schemas/invoice/create-invoice";
 import { FormSelect } from "@/components/ui/form/form-select";
-import { DefaultPDF, VercelPDF } from "@/components/pdf";
+import { DefaultPDF, MinimalPDF } from "@/components/pdf";
 import { SelectItem } from "@/components/ui/select";
 import { UseFormReturn } from "react-hook-form";
 import { TriangleIcon } from "lucide-react";
 import { BoxIcon } from "@/assets/icons";
 
-export type PdfTemplateName = "default" | "vercel" | undefined;
+export type PdfTemplateName = "default" | "minimal" | undefined;
 
 interface PdfTemplate {
   name: PdfTemplateName;
@@ -24,9 +24,9 @@ export const availablePdfTemplates: PdfTemplate[] = [
     icon: <BoxIcon />,
   },
   {
-    name: "vercel",
-    label: "Vercel",
-    component: VercelPDF,
+    name: "minimal",
+    label: "Minimal",
+    component: MinimalPDF,
     icon: <TriangleIcon stroke="none" fill="currentColor" />,
   },
 ];

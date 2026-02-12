@@ -43,7 +43,7 @@ const tw = createTw({
 });
 
 // Invoice PDF Document component
-const VercelPdf: React.FC<{ data: ZodCreateInvoiceSchema }> = ({ data }) => {
+const MinimalPdf: React.FC<{ data: ZodCreateInvoiceSchema }> = ({ data }) => {
   const subtotal = getSubTotalValue(data);
   const total = getTotalValue(data);
 
@@ -270,4 +270,4 @@ const VercelPdf: React.FC<{ data: ZodCreateInvoiceSchema }> = ({ data }) => {
   );
 };
 
-export default VercelPdf;
+export default MinimalPdf;

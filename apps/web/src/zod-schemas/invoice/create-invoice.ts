@@ -108,8 +108,8 @@ export const createInvoiceSchema = z.object({
         }),
         mode: z.enum(["dark", "light"], { invalid_type_error: "Mode must be either 'dark' or 'light'" }),
         template: z
-          .enum(["default", "vercel"], {
-            invalid_type_error: "Template must be either 'default' or 'vercel'",
+          .enum(["default", "minimal"], {
+            invalid_type_error: "Template must be either 'default' or 'minimal'",
           })
           .default("default")
           .optional(),
@@ -146,12 +146,12 @@ export type ZodCreateInvoiceSchema = z.infer<typeof createInvoiceSchema>;
 export const createInvoiceSchemaDefaultValues: ZodCreateInvoiceSchema = {
   companyDetails: {
     name: "Invoicely Ltd",
-    address: "123 Main St, Anytown, USA",
+    address: "15 Tanke Road, Ilorin, Kwara State, Nigeria",
     metadata: [],
   },
   clientDetails: {
     name: "John Doe",
-    address: "456 Second St, Anytown, USA",
+    address: "42 University Road, Ilorin, Kwara State, Nigeria",
     metadata: [],
   },
   invoiceDetails: {

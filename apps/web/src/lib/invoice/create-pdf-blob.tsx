@@ -1,6 +1,6 @@
 import { PdfTemplateName } from "@/app/(dashboard)/create/invoice/invoiceHelpers/invoice-templates";
 import { ZodCreateInvoiceSchema } from "@/zod-schemas/invoice/create-invoice";
-import { DefaultPDF, VercelPDF } from "@/components/pdf";
+import { DefaultPDF, MinimalPDF } from "@/components/pdf";
 import { pdf } from "@react-pdf/renderer";
 
 interface CreatePdfBlobProps {
@@ -25,8 +25,8 @@ const getPdfTemplate = (template: CreatePdfBlobProps["template"]) => {
 
   // else return the specified tempalte
   switch (template) {
-    case "vercel":
-      return VercelPDF;
+    case "minimal":
+      return MinimalPDF;
     default:
       return DefaultPDF;
   }
