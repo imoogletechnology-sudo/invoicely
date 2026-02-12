@@ -96,6 +96,7 @@ const Footer = () => {
   };
 
   return (
+    <div className="flex flex-col">
     <div
       ref={containerRef}
       className="flex h-[130px] items-center overflow-hidden px-4 sm:h-auto sm:px-0"
@@ -182,6 +183,12 @@ const Footer = () => {
           </linearGradient>
         </defs>
       </svg>
+    </div>
+    <div className="flex items-center justify-center border-t border-dashed py-4">
+      <p className="jetbrains-mono text-muted-foreground text-xs tracking-tight">
+        &copy; {new Date().getFullYear()} Imoogle Technology. All rights reserved.
+      </p>
+    </div>
     </div>
   );
 };
