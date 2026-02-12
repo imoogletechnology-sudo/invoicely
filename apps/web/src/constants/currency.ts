@@ -35,7 +35,23 @@ const getPdfSafePrefix = (currency: string): string => {
   if (symbol && PDF_SAFE_SYMBOLS.has(symbol)) {
     return symbol;
   }
-  return `${currency} `;
+  // Always use 3-letter code with a space for non-Latin symbols
+  return `${currency.toUpperCase()} `;
+};
+
+/**
+ * Get the display label for a currency (e.g. "NGN (₦)" or "$").
+ * Used in the invoice header to show both the code and symbol.
+ */
+export const getCurrencyDisplayLabel = (currency: string): string => {
+  const symbol = getSymbolFromCurrency(currency);
+  if (symbol && PDF_SAFE_SYMBOLS.has(symbol)) {
+    return symbol;
+  }
+  if (symbol) {
+    return `${currency.toUpperCase()} (${symbol})`;
+  }
+  return currency.toUpperCase();
 };
 
 /**

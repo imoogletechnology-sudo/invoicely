@@ -108,8 +108,8 @@ export const createInvoiceSchema = z.object({
         }),
         mode: z.enum(["dark", "light"], { invalid_type_error: "Mode must be either 'dark' or 'light'" }),
         template: z
-          .enum(["default", "minimal"], {
-            invalid_type_error: "Template must be either 'default' or 'minimal'",
+          .enum(["default", "minimal", "professional", "modern"], {
+            invalid_type_error: "Template must be 'default', 'minimal', 'professional', or 'modern'",
           })
           .default("default")
           .optional(),

@@ -16,6 +16,7 @@ import {
   Bricolage_Grotesque,
 } from "next/font/google";
 import { defaultWebsiteMetadata, defaultWebsiteViewport } from "@/constants/meta-data";
+import { ServiceWorkerRegister } from "@/components/ui/sw-register";
 import { PWAInstallPrompt } from "@/components/ui/pwa-install-prompt";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 import { TOAST_ICONS, TOAST_OPTIONS } from "@/constants/toast";
@@ -116,6 +117,7 @@ export default function RootLayout({
                         icons={TOAST_ICONS}
                         visibleToasts={4}
                       />
+                      <ServiceWorkerRegister />
                       <PWAInstallPrompt />
                       {children}
                     </ThemeProvider>

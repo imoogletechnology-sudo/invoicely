@@ -1,6 +1,6 @@
 import { PdfTemplateName } from "@/app/(dashboard)/create/invoice/invoiceHelpers/invoice-templates";
 import { ZodCreateInvoiceSchema } from "@/zod-schemas/invoice/create-invoice";
-import { DefaultPDF, MinimalPDF } from "@/components/pdf";
+import { DefaultPDF, MinimalPDF, ProfessionalPDF, ModernPDF } from "@/components/pdf";
 import { pdf } from "@react-pdf/renderer";
 
 interface CreatePdfBlobProps {
@@ -18,15 +18,17 @@ export const createPdfBlob = async ({ invoiceData, template }: CreatePdfBlobProp
 };
 
 const getPdfTemplate = (template: CreatePdfBlobProps["template"]) => {
-  // if there is no template, fallback to default
   if (!template) {
     return DefaultPDF;
   }
 
-  // else return the specified tempalte
   switch (template) {
     case "minimal":
       return MinimalPDF;
+    case "professional":
+      return ProfessionalPDF;
+    case "modern":
+      return ModernPDF;
     default:
       return DefaultPDF;
   }

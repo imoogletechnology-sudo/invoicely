@@ -5,7 +5,7 @@ import { GEIST_MONO_FONT, JETBRAINS_MONO_FONT, QUICKSAND_FONT } from "@/constant
 import { ZodCreateInvoiceSchema } from "@/zod-schemas/invoice/create-invoice";
 import { Document, Page, Text, View, Image, Font } from "@react-pdf/renderer";
 import { getSubTotalValue, getTotalValue } from "@/constants/pdf-helpers";
-import { formatCurrencyText } from "@/constants/currency";
+import { formatCurrencyText, getCurrencyDisplayLabel } from "@/constants/currency";
 import { createTw } from "react-pdf-tailwind";
 import { toWords } from "number-to-words";
 import { format } from "date-fns";
@@ -109,7 +109,7 @@ const DefaultPDF: React.FC<{ data: ZodCreateInvoiceSchema }> = ({ data }) => {
             )}
             <View style={tw("flex flex-row items-center gap-1")}>
               <Text style={tw("text-2xs font-semibold min-w-[100px]")}>Currency</Text>
-              <Text style={tw("text-2xs font-normal text-neutral-500")}>{data.invoiceDetails.currency}</Text>
+              <Text style={tw("text-2xs font-normal text-neutral-500")}>{getCurrencyDisplayLabel(data.invoiceDetails.currency)}</Text>
             </View>
           </View>
           {/* Invoice Logo */}

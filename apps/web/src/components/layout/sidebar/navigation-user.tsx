@@ -29,6 +29,7 @@ import { MiniSwitch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { useMounted } from "@mantine/hooks";
 import { useState } from "react";
+import { toast } from "sonner";
 import Image from "next/image";
 
 export function NavigationUser() {
@@ -128,13 +129,26 @@ const LoginButtonModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setIsDisabled(true);
 
-    clientAuth.signIn.social({
-      provider: "google",
-      callbackURL: pathname,
-    });
+    try {
+      await clientAuth.signIn.social({
+        provider: "google",
+        callbackURL: pathname,
+        fetchOptions: {
+          onError: (ctx) => {
+            console.error("[v0] Google sign-in error:", ctx.error);
+            toast.error("Sign in failed. Please try again.");
+            setIsDisabled(false);
+          },
+        },
+      });
+    } catch (error) {
+      console.error("[v0] Google sign-in exception:", error);
+      toast.error("Something went wrong. Please try again.");
+      setIsDisabled(false);
+    }
   };
 
   return (
